@@ -967,7 +967,9 @@
    },
    "type": "object"
   },
-  "EvalQueriesResponse": {},
+  "EvalQueriesResponse": {
+   "type": "object"
+  },
   "ExplorePanelsState": {
    "description": "This is an object constructed with the keys as the values of the enum VisType and the value being a bag of properties"
   },
@@ -4435,22 +4437,6 @@
    "type": "object"
   },
   "alertGroup": {
-   "description": "AlertGroup alert group",
-   "properties": {
-    "alerts": {
-     "description": "alerts",
-     "items": {
-      "$ref": "#/definitions/gettableAlert"
-     },
-     "type": "array"
-    },
-    "labels": {
-     "$ref": "#/definitions/labelSet"
-    },
-    "receiver": {
-     "$ref": "#/definitions/receiver"
-    }
-   },
    "required": [
     "alerts",
     "labels",
@@ -4459,9 +4445,9 @@
    "type": "object"
   },
   "alertGroups": {
-   "description": "AlertGroups alert groups",
    "items": {
-    "$ref": "#/definitions/alertGroup"
+    "$ref": "#/definitions/alertGroup",
+    "type": "object"
    },
    "type": "array"
   },
@@ -4564,48 +4550,6 @@
    "type": "object"
   },
   "gettableAlert": {
-   "properties": {
-    "annotations": {
-     "$ref": "#/definitions/labelSet"
-    },
-    "endsAt": {
-     "description": "ends at",
-     "format": "date-time",
-     "type": "string"
-    },
-    "fingerprint": {
-     "description": "fingerprint",
-     "type": "string"
-    },
-    "generatorURL": {
-     "description": "generator URL\nFormat: uri",
-     "format": "uri",
-     "type": "string"
-    },
-    "labels": {
-     "$ref": "#/definitions/labelSet"
-    },
-    "receivers": {
-     "description": "receivers",
-     "items": {
-      "$ref": "#/definitions/receiver"
-     },
-     "type": "array"
-    },
-    "startsAt": {
-     "description": "starts at",
-     "format": "date-time",
-     "type": "string"
-    },
-    "status": {
-     "$ref": "#/definitions/alertStatus"
-    },
-    "updatedAt": {
-     "description": "updated at",
-     "format": "date-time",
-     "type": "string"
-    }
-   },
    "required": [
     "labels",
     "annotations",
@@ -4621,11 +4565,13 @@
   "gettableAlerts": {
    "description": "GettableAlerts gettable alerts",
    "items": {
-    "$ref": "#/definitions/gettableAlert"
+    "$ref": "#/definitions/gettableAlert",
+    "type": "object"
    },
    "type": "array"
   },
   "gettableSilence": {
+   "description": "GettableSilence gettable silence",
    "properties": {
     "comment": {
      "description": "comment",
@@ -4674,36 +4620,13 @@
    "type": "object"
   },
   "gettableSilences": {
-   "description": "GettableSilences gettable silences",
    "items": {
-    "$ref": "#/definitions/gettableSilence"
+    "$ref": "#/definitions/gettableSilence",
+    "type": "object"
    },
    "type": "array"
   },
   "integration": {
-   "properties": {
-    "lastNotifyAttempt": {
-     "description": "A timestamp indicating the last attempt to deliver a notification regardless of the outcome.\nFormat: date-time",
-     "format": "date-time",
-     "type": "string"
-    },
-    "lastNotifyAttemptDuration": {
-     "description": "Duration of the last attempt to deliver a notification in humanized format (`1s` or `15ms`, etc).",
-     "type": "string"
-    },
-    "lastNotifyAttemptError": {
-     "description": "Error string for the last attempt to deliver a notification. Empty if the last attempt was successful.",
-     "type": "string"
-    },
-    "name": {
-     "description": "name",
-     "type": "string"
-    },
-    "sendResolved": {
-     "description": "send resolved",
-     "type": "boolean"
-    }
-   },
    "required": [
     "name",
     "sendResolved"
@@ -4824,33 +4747,6 @@
    "type": "array"
   },
   "postableSilence": {
-   "properties": {
-    "comment": {
-     "description": "comment",
-     "type": "string"
-    },
-    "createdBy": {
-     "description": "created by",
-     "type": "string"
-    },
-    "endsAt": {
-     "description": "ends at",
-     "format": "date-time",
-     "type": "string"
-    },
-    "id": {
-     "description": "id",
-     "type": "string"
-    },
-    "matchers": {
-     "$ref": "#/definitions/matchers"
-    },
-    "startsAt": {
-     "description": "starts at",
-     "format": "date-time",
-     "type": "string"
-    }
-   },
    "required": [
     "comment",
     "createdBy",
@@ -4861,24 +4757,6 @@
    "type": "object"
   },
   "receiver": {
-   "description": "Receiver receiver",
-   "properties": {
-    "active": {
-     "description": "active",
-     "type": "boolean"
-    },
-    "integrations": {
-     "description": "integrations",
-     "items": {
-      "$ref": "#/definitions/integration"
-     },
-     "type": "array"
-    },
-    "name": {
-     "description": "name",
-     "type": "string"
-    }
-   },
    "required": [
     "active",
     "integrations",
